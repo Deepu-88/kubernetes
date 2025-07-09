@@ -1,0 +1,50 @@
+Create and Run a kubernets pod using yaml configuration and write a shell script to run an demons in container
+
+ install steps kubernets
+
+ 1: launch 2 instances image ubuntu type t2.medium and security group allow all traffic, all tcp,copy public ip then go for teminal mobaxterm
+   after goto sakops on render website click on project then goto template copy the kubeadm master and work node configuration link
+   come to mobaxterm
+   step1: (master) configuration
+           sudo su -
+           apt update
+           paste the master kubeadm link after update
+
+   step2: (worker) configuration
+           sudo su -
+           apt update
+           paste the worker kubeadm link after update
+
+   step3: (master) copy kubeadm +token full
+            goto worknode then paste with command 
+            sudo and paste the link
+
+   step4: (master) then type the command
+           kubectl get nodes
+           kubectl describe node (copy ip and paste)
+           cat /etc/kubernets/
+
+        first task complete stpes
+
+ step1:   vi pod.yml
+ script:         apiVersion: v1
+                 kind: Pod
+                 metadata:
+                    name: demons
+                 spec:
+                    containers:
+                     - name: app
+                       image: amazonlinux
+                       command: ["/bin/bash", "-c", "while true; do echo am demon; sleep 3; done"]
+
+    2  kubectl apply -f pod.yml
+    3  cat pod.yml
+    4  kubectl get pods
+    5  kubectl get pods -o wide
+    6  kubectl describe pod demons
+    7  kubectl logs -f demons
+    8  kubectl exec -it demons -- /bin/bash
+    9  kubectl exec -it demons -- cat /etc/as-release
+   10  kubectl exec -it demons -- cat /etc/os-release
+   11  history
+
