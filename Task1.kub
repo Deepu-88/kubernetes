@@ -24,7 +24,7 @@ Create and Run a kubernets pod using yaml configuration and write a shell script
            kubectl describe node (copy ip and paste)
            cat /etc/kubernets/
 
-        first task complete stpes
+        first task complete steps
 
  step1:   vi pod.yml
  script:         apiVersion: v1
